@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "./navbar/navbar.component";
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,9 @@ import { RegisterComponent } from './register/register.component';
   imports: [CommonModule, 
     RouterOutlet, 
     NavbarComponent,
-    RegisterComponent],
+    RegisterComponent,
+    LoginComponent,
+    NotfoundComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

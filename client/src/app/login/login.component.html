@@ -1,0 +1,14 @@
+<h3>Login to your QuantumBank Account</h3>
+<br>
+<label>Username: </label>
+<br>
+<input type="text" id="username" [(ngModel)]="username" maxlength="255">
+<br>
+<label>Password: </label>
+<br>
+<input type="password" id="password" [(ngModel)]="password" maxlength="255">
+<br>
+<button (click)="loginUser()">Login</button>
+<br>
+<br>
+<a routerLink="/register">Do not have an account?</a>

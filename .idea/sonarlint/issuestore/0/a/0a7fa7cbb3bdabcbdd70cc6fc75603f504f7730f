@@ -1,0 +1,11 @@
+
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(£ñ×„8­½™2
+X	java:S125"<This block of commented-out lines of code should be removed.(º½íã8­“ 2
+_
+java:S1128"BRemove this unused import 'com.example.QuantumBank.entities.User'.(´ªğ˜8­“ 2
+b
+java:S1128"@Remove this unused import 'org.springframework.http.HttpStatus'.(íŸ¤Šúÿÿÿÿ8­“ 2
+f
+java:S1128"DRemove this unused import 'org.springframework.http.ResponseEntity'.(¶¯ø¦úÿÿÿÿ8­“ 2
+Q
+java:S1068"/Remove this unused "userService" private field.(¶òÁÈùÿÿÿÿ8“­“ 2

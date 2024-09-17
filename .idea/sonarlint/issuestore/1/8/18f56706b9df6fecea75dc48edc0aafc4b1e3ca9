@@ -1,0 +1,7 @@
+
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(£ñ×„8î†ÿ 2
+a
+java:S2583%"DChange this condition so that it does not always evaluate to "false"(Éâï—8û†ÿ 2
+G	java:S106"+Replace this use of System.out by a logger.(ê×¼©8ƒ‡ÿ 2
+®
+java:S1130-"Remove the declaration of thrown exception 'com.example.QuantumBank.exception.InvalidInputException', as it cannot be thrown from method's body.(«ãò¡8‰Õİ’ 2
