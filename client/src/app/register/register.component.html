@@ -12,9 +12,20 @@
 <br>
 <input type="text" id="phoneNumber" [(ngModel)]="phoneNumber" maxlength="15">
 <br>
+<label>Account Type</label>
+<br>
+<input type="radio" id="Personal" value="Personal" name="account_type" [(ngModel)]="userType">
+<label for="Personal">Personal</label>
+<input type="radio" id="Business" value="Business" name="account_type" [(ngModel)]="userType">
+<label for="Business">Business</label>
+<br>
 <label>Password</label>
 <br>
 <input type="password" id="password" [(ngModel)]="password" maxlength="255">
+<br>
+<label>Confirm Password</label>
+<br>
+<input type="password" [(ngModel)]="confirmPassword" maxlength="255">
 <br>
 <button (click)="registerUser()">Submit</button>
 <br>

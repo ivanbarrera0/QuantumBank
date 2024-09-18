@@ -17,6 +17,7 @@ export class RegisterComponent {
   email:string;
   phoneNumber:string;
   password:string;
+  confirmPassword:string;
   userType:string;
   remote:RemoteService;
 
@@ -26,7 +27,8 @@ export class RegisterComponent {
     this.email = "";
     this.phoneNumber = "";
     this.password = "";
-    this.userType = "Personal";
+    this.confirmPassword = "";
+    this.userType = "";
   }
 
   registerUser() {
@@ -39,6 +41,10 @@ export class RegisterComponent {
       alert("Enter a valid phone number!");
     } else if(this.password === "" || this.password.length > 255) {
       alert("Enter a valid password!");
+    } else if(this.confirmPassword === "" || this.confirmPassword.length > 255) {
+      alert("Enter a valid input");
+    } else if(this.password !== this.confirmPassword) {
+      alert("Confirm Pasword differs from Password!");
     } else {
       let user: User = {
         username: this.username,
