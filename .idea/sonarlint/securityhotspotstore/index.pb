@@ -25,3 +25,5 @@ Rserver/src/main/java/com/example/QuantumBank/exception/DuplicateUserException.j
 Qserver/src/main/java/com/example/QuantumBank/exception/AccessDeniedException.java,c\7\c769ccc11a9a1da901200e635367e33e7dd0dc23
 
 Qserver/src/main/java/com/example/QuantumBank/exception/InvalidInputException.java,e\2\e2c29b49f6556ee586f5bdc1a341b70e757efc2d
+>
+server/pom.xml,0\8\08a8b343eb3d041b4e874e74bf19e4275b4be110
