@@ -1,5 +1,6 @@
 package com.example.QuantumBank.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -28,6 +29,7 @@ public class User {
     private String userType;
 
     @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     private List<Account> accounts;
 
     public User() {

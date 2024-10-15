@@ -3,6 +3,7 @@ package com.example.QuantumBank.service;
 import com.example.QuantumBank.entities.User;
 import com.example.QuantumBank.exception.DuplicateUserException;
 import com.example.QuantumBank.exception.InvalidInputException;
+import com.example.QuantumBank.exception.NotFoundException;
 import com.example.QuantumBank.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,5 +36,16 @@ public class UserService {
         }
 
         return userRepository.save(user);
+    }
+
+    public User findUserByUsername(String username) throws NotFoundException {
+
+        Optional<User> foundUser = userRepository.findUserByUsername(username);
+
+        if(foundUser.isPresent()) {
+            return foundUser.get();
+        } else {
+            throw new NotFoundException("User not found!");
+        }
     }
 }

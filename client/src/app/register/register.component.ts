@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RemoteService, User } from '../remote.service';
+import { Account, RemoteService, User } from '../remote.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 
@@ -19,6 +19,7 @@ export class RegisterComponent {
   password:string;
   confirmPassword:string;
   userType:string;
+  accounts:Account[];
   remote:RemoteService;
 
   constructor(remote:RemoteService) {
@@ -29,6 +30,7 @@ export class RegisterComponent {
     this.password = "";
     this.confirmPassword = "";
     this.userType = "";
+    this.accounts = [];
   }
 
   registerUser() {
@@ -51,7 +53,8 @@ export class RegisterComponent {
         email: this.email,
         phoneNumber: this.phoneNumber,
         password: this.password,
-        userType: this.userType
+        userType: this.userType,
+        accounts: this.accounts
       }
   
       this.remote.registerUser(user)
@@ -59,7 +62,7 @@ export class RegisterComponent {
         next: (data) => {
           alert("User registered!");
           console.log(data);
-          this.remote.redirect('register');
+          this.remote.redirect('/login');
         },
         error: (error: HttpErrorResponse) => {
           alert("Couldn't register...");

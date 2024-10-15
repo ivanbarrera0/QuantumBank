@@ -1,1 +1,8 @@
-<p>dashboard works!</p>
+<h1>Hello, {{currentUser.getUsername()}}</h1>
+<br>
+<div *ngFor="let account of currentUser.accounts">
+    <p>Your Balance: </p>
+    <p>{{account.balance}}</p>
+    <br>
+</div>
+<button (click)="logout()">Logout</button>

@@ -1,5 +1,6 @@
 package com.example.QuantumBank.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,10 +15,16 @@ public class Account {
     private int balance;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     public Account() {
+    }
+
+    public Account(int balance, User user) {
+        this.balance = balance;
+        this.user = user;
     }
 
     public Account(int accountId, int balance) {

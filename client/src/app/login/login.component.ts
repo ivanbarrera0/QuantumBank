@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Auth, RemoteService } from '../remote.service';
+import { Auth, RemoteService, User } from '../remote.service';
 import { FormsModule } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CurrentuserService } from '../currentuser.service';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +15,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class LoginComponent {
 
   remote:RemoteService;
+  currentUser:CurrentuserService;
   username:string;
   password:string;
 
-  constructor(remote:RemoteService) {
+  constructor(remote:RemoteService, currentUser:CurrentuserService) {
     this.remote = remote;
+    this.currentUser = currentUser;
     this.username = "";
     this.password = "";
   }
@@ -39,7 +42,8 @@ export class LoginComponent {
       .subscribe({
         next: (data) => {
           console.log(data);
-          this.remote.redirect('dashboard');
+          this.currentUser.setCurrentUser(data.body as User);
+          this.remote.redirect('/dashboard');
         },
         error: (error: HttpErrorResponse) => {
           alert("Access Denied!");

@@ -51,6 +51,11 @@ export interface User {
   phoneNumber:string;
   password:string;
   userType:string;
+  accounts:Account[]
+}
+
+export interface Account {
+  balance:number;
 }
 
 export interface Auth {
