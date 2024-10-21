@@ -10,7 +10,6 @@ export class CurrentuserService {
   email:string;
   phoneNumber:string;
   password:string;
-  userType:string;
   accounts:Account[];
 
   constructor() {
@@ -18,7 +17,6 @@ export class CurrentuserService {
     this.email = "";
     this.phoneNumber = "";
     this.password = "";
-    this.userType = "";
     this.accounts = [];
   }
 
@@ -34,10 +32,6 @@ export class CurrentuserService {
     return this.phoneNumber;
   }
 
-  getUserType():string {
-    return this.userType;
-  }
-
   getAccounts():Account[] {
     return this.accounts;
   }
@@ -47,7 +41,6 @@ export class CurrentuserService {
     this.email = user.email;
     this.phoneNumber = user.phoneNumber;
     this.password = user.password;
-    this.userType = user.userType;
     this.accounts = user.accounts;
   }
 
@@ -57,7 +50,6 @@ export class CurrentuserService {
       email: this.email,
       phoneNumber: this.phoneNumber,
       password: this.password,
-      userType: this.userType,
       accounts: this.accounts
     }
 
@@ -69,7 +61,6 @@ export class CurrentuserService {
     this.email = "";
     this.phoneNumber = "";
     this.password = "";
-    this.userType = "";
     this.accounts = [];
   }
 }

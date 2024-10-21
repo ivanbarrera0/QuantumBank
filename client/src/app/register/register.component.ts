@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Account, RemoteService, User } from '../remote.service';
+import { Account, RemoteService, User, UserAccountDto } from '../remote.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 
@@ -18,7 +18,7 @@ export class RegisterComponent {
   phoneNumber:string;
   password:string;
   confirmPassword:string;
-  userType:string;
+  accountType:string;
   accounts:Account[];
   remote:RemoteService;
 
@@ -29,7 +29,7 @@ export class RegisterComponent {
     this.phoneNumber = "";
     this.password = "";
     this.confirmPassword = "";
-    this.userType = "";
+    this.accountType = "";
     this.accounts = [];
   }
 
@@ -48,16 +48,22 @@ export class RegisterComponent {
     } else if(this.password !== this.confirmPassword) {
       alert("Confirm Pasword differs from Password!");
     } else {
-      let user: User = {
-        username: this.username,
-        email: this.email,
-        phoneNumber: this.phoneNumber,
-        password: this.password,
-        userType: this.userType,
-        accounts: this.accounts
+
+      let userAccountDto:UserAccountDto = {
+        user: {
+          username:this.username,
+          email: this.email,
+          phoneNumber: this.phoneNumber,
+          password: this.password,
+          accounts: this.accounts
+        },
+        account: {
+          balance: 0,
+          accountType: this.accountType
+        }
       }
   
-      this.remote.registerUser(user)
+      this.remote.registerUser(userAccountDto)
       .subscribe({
         next: (data) => {
           alert("User registered!");

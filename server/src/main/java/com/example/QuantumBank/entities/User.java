@@ -25,9 +25,6 @@ public class User {
     @Column
     private String password;
 
-    @Column
-    private String userType;
-
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
     private List<Account> accounts;
@@ -35,30 +32,27 @@ public class User {
     public User() {
     }
 
-    public User(String username, String email, String phoneNumber, String password, String userType) {
+    public User(String username, String email, String phoneNumber, String password) {
         this.username = username;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
-        this.userType = userType;
     }
 
-    public User(String username, String email, String phoneNumber, String password, String userType, List<Account> accounts) {
+    public User(String username, String email, String phoneNumber, String password, List<Account> accounts) {
         this.username = username;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
-        this.userType = userType;
         this.accounts = accounts;
     }
 
-    public User(int userId, String username, String email, String phoneNumber, String password, String userType, List<Account> accounts) {
+    public User(int userId, String username, String email, String phoneNumber, String password, List<Account> accounts) {
         this.userId = userId;
         this.username = username;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
-        this.userType = userType;
         this.accounts = accounts;
     }
 
@@ -102,14 +96,6 @@ public class User {
         this.password = password;
     }
 
-    public String getUserType() {
-        return userType;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType;
-    }
-
     public List<Account> getAccounts() {
         return accounts;
     }
@@ -121,11 +107,12 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
+                "userId=" + userId +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", password='" + password + '\'' +
-                ", userType='" + userType + '\'' +
+                ", accounts=" + accounts +
                 '}';
     }
 }

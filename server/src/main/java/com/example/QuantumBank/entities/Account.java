@@ -12,6 +12,9 @@ public class Account {
     private int accountId;
 
     @Column
+    private String accountType;
+
+    @Column
     private int balance;
 
     @ManyToOne
@@ -22,18 +25,20 @@ public class Account {
     public Account() {
     }
 
-    public Account(int balance, User user) {
+    public Account(String accountType, int balance) {
+        this.accountType = accountType;
+        this.balance = balance;
+    }
+
+    public Account(String accountType, int balance, User user) {
+        this.accountType = accountType;
         this.balance = balance;
         this.user = user;
     }
 
-    public Account(int accountId, int balance) {
+    public Account(int accountId, String accountType, int balance, User user) {
         this.accountId = accountId;
-        this.balance = balance;
-    }
-
-    public Account(int accountId, int balance, User user) {
-        this.accountId = accountId;
+        this.accountType = accountType;
         this.balance = balance;
         this.user = user;
     }
@@ -44,6 +49,14 @@ public class Account {
 
     public void setAccountId(int accountId) {
         this.accountId = accountId;
+    }
+
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
     }
 
     public int getBalance() {
@@ -66,6 +79,7 @@ public class Account {
     public String toString() {
         return "Account{" +
                 "accountId=" + accountId +
+                ", accountType='" + accountType + '\'' +
                 ", balance=" + balance +
                 ", user=" + user +
                 '}';

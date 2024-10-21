@@ -1,5 +1,6 @@
 package com.example.QuantumBank.controller;
 
+import com.example.QuantumBank.dto.UserAccountDto;
 import com.example.QuantumBank.entities.Account;
 import com.example.QuantumBank.entities.Auth;
 import com.example.QuantumBank.entities.User;
@@ -30,7 +31,10 @@ public class AuthController {
     }
 
     @PostMapping("/register/auth")
-    public ResponseEntity<User> registerUser(@RequestBody User user) throws DuplicateUserException, InvalidInputException {
+    public ResponseEntity<User> registerUser(@RequestBody UserAccountDto userAccountDto) throws DuplicateUserException, InvalidInputException {
+
+        User user = userAccountDto.getUser();
+        Account account = userAccountDto.getAccount();
 
         Auth auth = new Auth(user.getUsername(), user.getPassword());
 
@@ -40,14 +44,12 @@ public class AuthController {
 
         userService.saveUser(user);
 
-        Account account = new Account(0, user);
+        Account accountWithUser = new Account(account.getAccountType(), account.getBalance(), user);
 
-        accountService.saveAccount(account);
+        accountService.saveAccount(accountWithUser);
 
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
-
-    // TODO: Use JSONManagedReference and JSONBackReference to the objects to prevent a circular dependency
 
     @PostMapping("/login/auth")
     public ResponseEntity<User> loginUser(@RequestBody Auth auth) throws AccessDeniedException, InvalidInputException, NotFoundException {

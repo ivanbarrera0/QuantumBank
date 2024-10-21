@@ -22,9 +22,9 @@ export class RemoteService {
     this.router.navigate([url]);
   }
 
-  registerUser(user:User): Observable<HttpResponse<Object>> {
+  registerUser(userAccountDto:UserAccountDto): Observable<HttpResponse<Object>> {
 
-    return this.httpClient.post(this.baseURL + "/register/auth", user, {
+    return this.httpClient.post(this.baseURL + "/register/auth", userAccountDto, {
       observe:'response',
       withCredentials: true,
       headers: new HttpHeaders ({
@@ -50,15 +50,20 @@ export interface User {
   email:string;
   phoneNumber:string;
   password:string;
-  userType:string;
   accounts:Account[]
 }
 
 export interface Account {
   balance:number;
+  accountType:string;
 }
 
 export interface Auth {
   username:string;
   password:string;
+}
+
+export interface UserAccountDto {
+  user:User;
+  account:Account;
 }
