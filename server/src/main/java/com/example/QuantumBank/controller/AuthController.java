@@ -44,9 +44,9 @@ public class AuthController {
 
         userService.saveUser(user);
 
-        Account accountWithUser = new Account(account.getAccountType(), account.getBalance(), user);
+        account.setUser(user);
 
-        accountService.saveAccount(accountWithUser);
+        accountService.saveAccount(account);
 
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
